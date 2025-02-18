@@ -110,8 +110,78 @@ const Admin = () => {
                                         <td>{student.dept}</td>
                                         <td>{student.mentor}</td>
                                         <td className="actions-cell">
-                                            <Link to={`/admin-edit-student/${student._id}`} className="text-blue-500 hover:underline">Update</Link> |
-                                            <Link to={``} className="text-red-500 hover:underline ml-2">Delete</Link>
+                                            <Link
+                                                to={`/admin-edit-student/${student._id}`}
+                                                className="text-blue-500 hover:underline"
+                                            >
+                                                Update
+                                            </Link>{" "}
+                                            |
+                                            {/* <Link
+                                                to={``}
+                                                onClick={async () => {
+                                                    if (
+                                                        window.confirm(
+                                                            "Are you sure you want to delete this student?"
+                                                        )
+                                                    ) {
+                                                        try {
+                                                            await axios.delete(
+                                                                `http://localhost:5001/api/delete-students/${student._id}`
+                                                            );
+                                                            const response =
+                                                                await axios.get(
+                                                                    "http://localhost:5001/api/students"
+                                                                );
+                                                            setStudents(
+                                                                response.data
+                                                            );
+                                                        } catch (error) {
+                                                            console.error(
+                                                                "Error deleting student:",
+                                                                error
+                                                            );
+                                                            alert(
+                                                                "Failed to delete student."
+                                                            );
+                                                        }
+                                                    }
+                                                }}
+                                                className="text-red-500 hover:underline ml-2"
+                                            >
+                                                Delete
+                                            </Link> */}
+                                            <Link
+                                                to={``}
+                                                onClick={async () => {
+                                                    if (
+                                                        window.confirm(
+                                                            "Are you sure you want to delete this student?"
+                                                        )
+                                                    ) {
+                                                        try {
+                                                            await axios.delete(
+                                                                `http://localhost:5001/api/delete-students/${student._id}`
+                                                            );
+                                                            const response =
+                                                                await axios.get(
+                                                                    "http://localhost:5001/api/students"
+                                                                );
+                                                            setStudents(
+                                                                response.data
+                                                            );
+                                                        } catch (error) {
+                                                            console.error(
+                                                                "Error deleting student:",
+                                                                error
+                                                            );
+                                                        }
+                                                    }
+                                                }}
+                                                className="text-red-500 hover:underline ml-2"
+                                            >
+                                                Delete
+                                            </Link>
                                         </td>
                                     </tr>
                                 ))}
@@ -142,8 +212,44 @@ const Admin = () => {
 
                                         <td>{mentor.expertise}</td>
                                         <td className="actions-cell">
-                                            <Link to={`/admin-edit-mentor/${mentor._id}`} className="text-blue-500 hover:underline">Update</Link> |
-                                            <Link to={``} className="text-red-500 hover:underline ml-2">Delete</Link>
+                                            <Link
+                                                to={`/admin-edit-mentor/${mentor._id}`}
+                                                className="text-blue-500 hover:underline"
+                                            >
+                                                Update
+                                            </Link>{" "}
+                                            <Link
+                                                to={``}
+                                                onClick={async () => {
+                                                    if (
+                                                        window.confirm(
+                                                            "Are you sure you want to delete this mentor?"
+                                                        )
+                                                    ) {
+                                                        try {
+                                                            await axios.delete(
+                                                                `http://localhost:5001/api/delete-mentor/${mentor._id}`
+                                                            );
+                                                            // Refresh mentor list
+                                                            const response =
+                                                                await axios.get(
+                                                                    "http://localhost:5001/api/mentors"
+                                                                );
+                                                            setMentors(
+                                                                response.data
+                                                            );
+                                                        } catch (error) {
+                                                            console.error(
+                                                                "Error deleting mentor:",
+                                                                error
+                                                            );
+                                                        }
+                                                    }
+                                                }}
+                                                className="text-red-500 hover:underline ml-2"
+                                            >
+                                                Delete
+                                            </Link>
                                         </td>
                                     </tr>
                                 ))}

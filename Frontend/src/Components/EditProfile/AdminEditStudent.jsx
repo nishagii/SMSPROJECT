@@ -1,6 +1,9 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React from "react";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AdminEditStudent = () => {
     const { id } = useParams();
@@ -16,7 +19,9 @@ const AdminEditStudent = () => {
     useEffect(() => {
         const fetchStudent = async () => {
             try {
-                const response = await axios.get(`http://localhost:5001/api/students/${id}`);
+                const response = await axios.get(
+                    `http://localhost:5001/api/student/${id}`
+                );
                 setStudent(response.data);
             } catch (error) {
                 console.error("Error fetching student:", error);
@@ -32,79 +37,95 @@ const AdminEditStudent = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:5001/api/students/${id}`, student);
+            await axios.put(
+                `http://localhost:5001/api/edit-student/${id}`,
+                student
+            );
+            toast.success("Student updated successfully!");
             alert("Student updated successfully!");
-            navigate("/");
+            navigate("/admin-dashboard");
         } catch (error) {
+            toast.error("Error updating student");
             console.error("Error updating student:", error);
         }
     };
 
     return (
-        <div className="max-w-lg mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Edit Student</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-4">
-                    <label className="block text-gray-700">Name</label>
-                    <input
-                        type="text"
-                        name="sname"
-                        value={student.sname}
-                        onChange={handleChange}
-                        className="w-full p-2 border rounded-lg"
-                        required
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700">Email</label>
-                    <input
-                        type="email"
-                        name="mail"
-                        value={student.mail}
-                        onChange={handleChange}
-                        className="w-full p-2 border rounded-lg"
-                        required
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700">Year</label>
-                    <input
-                        type="text"
-                        name="year"
-                        value={student.year}
-                        onChange={handleChange}
-                        className="w-full p-2 border rounded-lg"
-                        required
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700">Department</label>
-                    <input
-                        type="text"
-                        name="dept"
-                        value={student.dept}
-                        onChange={handleChange}
-                        className="w-full p-2 border rounded-lg"
-                        required
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700">Mentor</label>
-                    <input
-                        type="text"
-                        name="mentor"
-                        value={student.mentor}
-                        onChange={handleChange}
-                        className="w-full p-2 border rounded-lg"
-                    />
-                </div>
-                <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-lg">
-                    Update Student
-                </button>
-            </form>
-        </div>
+        <>
+            <ToastContainer />
+            <div className="max-w-lg mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+                <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+                    Edit Student
+                </h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-4">
+                        <label className="block text-gray-700">Name</label>
+                        <input
+                            type="text"
+                            name="sname"
+                            value={student.sname}
+                            onChange={handleChange}
+                            className="w-full p-2 border rounded-lg"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700">Email</label>
+                        <input
+                            type="email"
+                            name="mail"
+                            value={student.mail}
+                            onChange={handleChange}
+                            className="w-full p-2 border rounded-lg"
+                            required
+                            readOnly
+                            disabled
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700">Year</label>
+                        <input
+                            type="text"
+                            name="year"
+                            value={student.year}
+                            onChange={handleChange}
+                            className="w-full p-2 border rounded-lg"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700">
+                            Department
+                        </label>
+                        <input
+                            type="text"
+                            name="dept"
+                            value={student.dept}
+                            onChange={handleChange}
+                            className="w-full p-2 border rounded-lg"
+                            required
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700">Mentor</label>
+                        <input
+                            type="text"
+                            name="mentor"
+                            value={student.mentor}
+                            onChange={handleChange}
+                            className="w-full p-2 border rounded-lg"
+                        />
+                    </div>
+                    <button
+                        type="submit"
+                        className="w-full bg-blue-500 text-white py-2 rounded-lg"
+                    >
+                        Update Student
+                    </button>
+                </form>
+            </div>
+        </>
     );
-}
+};
 
-export default AdminEditStudent
-
+export default AdminEditStudent;
