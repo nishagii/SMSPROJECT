@@ -632,7 +632,10 @@ app.post("/api/reset-password", async (req, res) => {
 // get all students
 app.get("/api/students", async (req, res) => {
     try {
-        const students = await Student.find();
+        const students = await Student.find(
+            {},
+            "sid sname mail year dept mentor"
+        );
         res.status(200).json(students);
     } catch {
         res.status(500).json({ error: error.message });
@@ -648,7 +651,6 @@ app.get("/api/mentors", async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-
 
 // Get Mentors to Student Sign up dashboard
 app.get("/api/mentors", async (req, res) => {

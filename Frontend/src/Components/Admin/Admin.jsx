@@ -1,34 +1,74 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./Admin.css";
 const Admin = () => {
     const [activeTab, setActiveTab] = useState("students");
-    const students = [
-        { id: 1, name: "Alice Johnson", email: "alice@example.com" },
-        { id: 2, name: "Bob Smith", email: "bob@example.com" },
-    ];
-    const mentors = [
-        { id: 1, name: "Dr. Emily Brown", expertise: "Computer Science" },
-        { id: 2, name: "Mr. James Wilson", expertise: "Data Science" },
-    ];
+    const [students, setStudents] = useState([]);
+    const [mentors, setMentors] = useState([]);
+
     const handleUpdate = (id) => {
-        console.log(`Update ${activeTab === "students" ? "student" : "mentor"} with id:`, id);
+        console.log(
+            `Update ${
+                activeTab === "students" ? "student" : "mentor"
+            } with id:`,
+            id
+        );
     };
     const handleDelete = (id) => {
-        console.log(`Delete ${activeTab === "students" ? "student" : "mentor"} with id:`, id);
+        console.log(
+            `Delete ${
+                activeTab === "students" ? "student" : "mentor"
+            } with id:`,
+            id
+        );
     };
+
+    useEffect(() => {
+        const fetchStudents = async () => {
+            try {
+                const response = await axios.get(
+                    "http://localhost:5001/api/students"
+                );
+                setStudents(response.data);
+                console.log(response.data);
+            } catch (error) {
+                console.error("Error fetching students:", error);
+            }
+        };
+        fetchStudents();
+    }, []);
+
+    useEffect(() => {
+        const fetchMentors = async () => {
+            try {
+                const response = await axios.get(
+                    "http://localhost:5001/api/mentors"
+                );
+                setMentors(response.data);
+            } catch (error) {
+                console.error("Error fetching students:", error);
+            }
+        };
+        fetchMentors();
+    }, []);
+
     return (
         <div className="admin-container">
             <h2 className="admin-title">Admin Dashboard</h2>
             <div className="tabs-container">
                 <div className="tabs">
                     <button
-                        className={`tab ${activeTab === "students" ? "active" : ""}`}
+                        className={`tab ${
+                            activeTab === "students" ? "active" : ""
+                        }`}
                         onClick={() => setActiveTab("students")}
                     >
                         Students
                     </button>
                     <button
-                        className={`tab ${activeTab === "mentors" ? "active" : ""}`}
+                        className={`tab ${
+                            activeTab === "mentors" ? "active" : ""
+                        }`}
                         onClick={() => setActiveTab("mentors")}
                     >
                         Mentors
@@ -36,7 +76,9 @@ const Admin = () => {
                     <div
                         className="slider"
                         style={{
-                            transform: `translateX(${activeTab === "students" ? "0" : "100"}%)`
+                            transform: `translateX(${
+                                activeTab === "students" ? "0" : "100"
+                            }%)`,
                         }}
                     />
                 </div>
@@ -51,25 +93,35 @@ const Admin = () => {
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>year</th>
+                                    <th>department</th>
+                                    <th>mentor</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {students.map((student) => (
-                                    <tr key={student.id}>
-                                        <td>{student.id}</td>
-                                        <td>{student.name}</td>
-                                        <td>{student.email}</td>
+                                    <tr key={student._id}>
+                                        <td>{student.sid}</td>
+                                        <td>{student.sname}</td>
+                                        <td>{student.mail}</td>
+                                        <td>{student.year}</td>
+                                        <td>{student.dept}</td>
+                                        <td>{student.mentor}</td>
                                         <td className="actions-cell">
                                             <button
                                                 className="action-btn update-btn"
-                                                onClick={() => handleUpdate(student.id)}
+                                                onClick={() =>
+                                                    handleUpdate(student.id)
+                                                }
                                             >
                                                 Update
                                             </button>
                                             <button
                                                 className="action-btn delete-btn"
-                                                onClick={() => handleDelete(student.id)}
+                                                onClick={() =>
+                                                    handleDelete(student.id)
+                                                }
                                             >
                                                 Delete
                                             </button>
@@ -86,28 +138,36 @@ const Admin = () => {
                         <table className="data-table">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Name</th>
-                                    <th>Expertise</th>
+                                    <th>Email</th>
+                                    <th>Department</th>
+                                    <th>Phone</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {mentors.map((mentor) => (
-                                    <tr key={mentor.id}>
-                                        <td>{mentor.id}</td>
+                                    <tr key={mentor._id}>
                                         <td>{mentor.name}</td>
+                                        <td>{mentor.mail}</td>
+                                        <td>{mentor.dept}</td>
+                                        <td>{mentor.phone}</td>
+
                                         <td>{mentor.expertise}</td>
                                         <td className="actions-cell">
                                             <button
                                                 className="action-btn update-btn"
-                                                onClick={() => handleUpdate(mentor.id)}
+                                                onClick={() =>
+                                                    handleUpdate(mentor.id)
+                                                }
                                             >
                                                 Update
                                             </button>
                                             <button
                                                 className="action-btn delete-btn"
-                                                onClick={() => handleDelete(mentor.id)}
+                                                onClick={() =>
+                                                    handleDelete(mentor.id)
+                                                }
                                             >
                                                 Delete
                                             </button>
