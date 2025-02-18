@@ -23,6 +23,7 @@ const AdminEditStudent = () => {
                     `http://localhost:5001/api/student/${id}`
                 );
                 setStudent(response.data);
+                console.log(response.data);
             } catch (error) {
                 console.error("Error fetching student:", error);
             }
@@ -114,6 +115,8 @@ const AdminEditStudent = () => {
                             value={student.mentor}
                             onChange={handleChange}
                             className="w-full p-2 border rounded-lg"
+                            readOnly
+                            disabled
                         />
                     </div>
                     <button

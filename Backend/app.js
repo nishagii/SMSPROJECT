@@ -631,21 +631,17 @@ app.post("/api/reset-password", async (req, res) => {
 
 // get student by sid
 app.get("/api/student/:_id", async (req, res) => {
-    if (req.session.user) {
-        try {
-            const { _id } = req.params;
-            const student = await Student.findOne({ _id });
+    try {
+        const { _id } = req.params;
+        const student = await Student.findOne({ _id });
 
-            if (!student) {
-                return res.status(404).json({ message: "Student not found" });
-            }
-
-            res.status(200).json(student);
-        } catch (error) {
-            res.status(500).json({ error: error.message });
+        if (!student) {
+            return res.status(404).json({ message: "Student not found" });
         }
-    } else {
-        res.status(200).json({ isActive: false, message: "Session expired" });
+
+        res.status(200).json(student);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 });
 

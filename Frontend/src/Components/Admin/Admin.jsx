@@ -124,9 +124,9 @@ const Admin = () => {
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Year</th>
-                                        <th>Department</th>
-                                        <th>Mentor</th>
+                                        <th>year</th>
+                                        <th>department</th>
+                                        <th>mentor</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -142,13 +142,39 @@ const Admin = () => {
                                             <td className="actions-cell">
                                                 <Link
                                                     to={`/admin-edit-student/${student._id}`}
-                                                    className="update-btn"
+                                                    className="text-blue-500 hover:underline"
                                                 >
                                                     Update
-                                                </Link>
+                                                </Link>{" "}
+                                                |
                                                 <Link
-                                                    to="#"
-                                                    className="delete-btn"
+                                                    to={``}
+                                                    onClick={async () => {
+                                                        if (
+                                                            window.confirm(
+                                                                "Are you sure you want to delete this student?"
+                                                            )
+                                                        ) {
+                                                            try {
+                                                                await axios.delete(
+                                                                    `http://localhost:5001/api/delete-students/${student._id}`
+                                                                );
+                                                                const response =
+                                                                    await axios.get(
+                                                                        "http://localhost:5001/api/students"
+                                                                    );
+                                                                setStudents(
+                                                                    response.data
+                                                                );
+                                                            } catch (error) {
+                                                                console.error(
+                                                                    "Error deleting student:",
+                                                                    error
+                                                                );
+                                                            }
+                                                        }
+                                                    }}
+                                                    className="text-red-500 hover:underline ml-2"
                                                 >
                                                     Delete
                                                 </Link>
@@ -158,105 +184,6 @@ const Admin = () => {
                                 </tbody>
                             </table>
                         </div>
-                        <table className="data-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>year</th>
-                                    <th>department</th>
-                                    <th>mentor</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {students.map((student) => (
-                                    <tr key={student._id}>
-                                        <td>{student.sid}</td>
-                                        <td>{student.sname}</td>
-                                        <td>{student.mail}</td>
-                                        <td>{student.year}</td>
-                                        <td>{student.dept}</td>
-                                        <td>{student.mentor}</td>
-                                        <td className="actions-cell">
-                                            <Link
-                                                to={`/admin-edit-student/${student._id}`}
-                                                className="text-blue-500 hover:underline"
-                                            >
-                                                Update
-                                            </Link>{" "}
-                                            |
-                                            {/* <Link
-                                                to={``}
-                                                onClick={async () => {
-                                                    if (
-                                                        window.confirm(
-                                                            "Are you sure you want to delete this student?"
-                                                        )
-                                                    ) {
-                                                        try {
-                                                            await axios.delete(
-                                                                `http://localhost:5001/api/delete-students/${student._id}`
-                                                            );
-                                                            const response =
-                                                                await axios.get(
-                                                                    "http://localhost:5001/api/students"
-                                                                );
-                                                            setStudents(
-                                                                response.data
-                                                            );
-                                                        } catch (error) {
-                                                            console.error(
-                                                                "Error deleting student:",
-                                                                error
-                                                            );
-                                                            alert(
-                                                                "Failed to delete student."
-                                                            );
-                                                        }
-                                                    }
-                                                }}
-                                                className="text-red-500 hover:underline ml-2"
-                                            >
-                                                Delete
-                                            </Link> */}
-                                            <Link
-                                                to={``}
-                                                onClick={async () => {
-                                                    if (
-                                                        window.confirm(
-                                                            "Are you sure you want to delete this student?"
-                                                        )
-                                                    ) {
-                                                        try {
-                                                            await axios.delete(
-                                                                `http://localhost:5001/api/delete-students/${student._id}`
-                                                            );
-                                                            const response =
-                                                                await axios.get(
-                                                                    "http://localhost:5001/api/students"
-                                                                );
-                                                            setStudents(
-                                                                response.data
-                                                            );
-                                                        } catch (error) {
-                                                            console.error(
-                                                                "Error deleting student:",
-                                                                error
-                                                            );
-                                                        }
-                                                    }
-                                                }}
-                                                className="text-red-500 hover:underline ml-2"
-                                            >
-                                                Delete
-                                            </Link>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
                     </div>
                 )}
                 {activeTab === "mentors" && (
@@ -270,7 +197,6 @@ const Admin = () => {
                                         <th>Email</th>
                                         <th>Department</th>
                                         <th>Phone</th>
-                                        <th>Expertise</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -281,17 +207,44 @@ const Admin = () => {
                                             <td>{mentor.mail}</td>
                                             <td>{mentor.dept}</td>
                                             <td>{mentor.phone}</td>
+
                                             <td>{mentor.expertise}</td>
                                             <td className="actions-cell">
                                                 <Link
                                                     to={`/admin-edit-mentor/${mentor._id}`}
-                                                    className="update-btn"
+                                                    className="text-blue-500 hover:underline"
                                                 >
                                                     Update
-                                                </Link>
+                                                </Link>{" "}
                                                 <Link
-                                                    to="#"
-                                                    className="delete-btn"
+                                                    to={``}
+                                                    onClick={async () => {
+                                                        if (
+                                                            window.confirm(
+                                                                "Are you sure you want to delete this mentor?"
+                                                            )
+                                                        ) {
+                                                            try {
+                                                                await axios.delete(
+                                                                    `http://localhost:5001/api/delete-mentor/${mentor._id}`
+                                                                );
+                                                                // Refresh mentor list
+                                                                const response =
+                                                                    await axios.get(
+                                                                        "http://localhost:5001/api/mentors"
+                                                                    );
+                                                                setMentors(
+                                                                    response.data
+                                                                );
+                                                            } catch (error) {
+                                                                console.error(
+                                                                    "Error deleting mentor:",
+                                                                    error
+                                                                );
+                                                            }
+                                                        }
+                                                    }}
+                                                    className="text-red-500 hover:underline ml-2"
                                                 >
                                                     Delete
                                                 </Link>
@@ -301,69 +254,6 @@ const Admin = () => {
                                 </tbody>
                             </table>
                         </div>
-                        <table className="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Department</th>
-                                    <th>Phone</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {mentors.map((mentor) => (
-                                    <tr key={mentor._id}>
-                                        <td>{mentor.name}</td>
-                                        <td>{mentor.mail}</td>
-                                        <td>{mentor.dept}</td>
-                                        <td>{mentor.phone}</td>
-
-                                        <td>{mentor.expertise}</td>
-                                        <td className="actions-cell">
-                                            <Link
-                                                to={`/admin-edit-mentor/${mentor._id}`}
-                                                className="text-blue-500 hover:underline"
-                                            >
-                                                Update
-                                            </Link>{" "}
-                                            <Link
-                                                to={``}
-                                                onClick={async () => {
-                                                    if (
-                                                        window.confirm(
-                                                            "Are you sure you want to delete this mentor?"
-                                                        )
-                                                    ) {
-                                                        try {
-                                                            await axios.delete(
-                                                                `http://localhost:5001/api/delete-mentor/${mentor._id}`
-                                                            );
-                                                            // Refresh mentor list
-                                                            const response =
-                                                                await axios.get(
-                                                                    "http://localhost:5001/api/mentors"
-                                                                );
-                                                            setMentors(
-                                                                response.data
-                                                            );
-                                                        } catch (error) {
-                                                            console.error(
-                                                                "Error deleting mentor:",
-                                                                error
-                                                            );
-                                                        }
-                                                    }
-                                                }}
-                                                className="text-red-500 hover:underline ml-2"
-                                            >
-                                                Delete
-                                            </Link>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
                     </div>
                 )}
             </div>
