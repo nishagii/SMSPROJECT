@@ -1,0 +1,155 @@
+.admin-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    padding: 32px;
+}
+.admin-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1a1a1a;
+    text-align: center;
+    margin-bottom: 32px;
+}
+.tabs-container {
+    position: relative;
+    margin-bottom: 32px;
+}
+.tabs {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    background: #f6f6f7;
+    padding: 8px;
+    border-radius: 12px;
+    margin: 0 auto;
+    max-width: 400px;
+}
+.tab {
+    position: relative;
+    padding: 12px 32px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #8E9196;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 2;
+    flex: 1;
+    text-align: center;
+}
+.tab.active {
+    color: #1a1a1a;
+}
+.slider {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: calc(50% - 8px);
+    height: calc(100% - 16px);
+    background: #ffffff;
+    border-radius: 8px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.section-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+}
+.data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.data-table thead {
+    background: #f3f3f3;
+}
+.data-table th {
+    padding: 16px 24px;
+    font-weight: 500;
+    color: #1a1a1a;
+    text-align: left;
+    font-size: 14px;
+}
+.data-table td {
+    padding: 16px 24px;
+    color: #4a4a4a;
+    border-top: 1px solid #f1f1f1;
+    font-size: 14px;
+}
+.data-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+.data-table tbody tr:hover {
+    background-color: #f8f8f8;
+}
+.content-container {
+    animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@media (max-width: 768px) {
+    .admin-container {
+        margin: 20px;
+        padding: 20px;
+    }
+    .data-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .tabs {
+        max-width: 100%;
+    }
+    .tab {
+        padding: 12px 20px;
+    }
+}
+
+.actions-cell {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+    align-items: center;
+}
+.action-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.update-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+.update-btn:hover {
+    background-color: #45a049;
+}
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+.delete-btn:hover {
+    background-color: #da190b;
+}

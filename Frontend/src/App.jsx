@@ -23,6 +23,7 @@ import SessionTable from './Components/SessionTable/SessionTable.jsx';
 import ViewFeedback from './Components/ViewFeedback/ViewFeedback.jsx';
 import UpdateForm from './Components/UpdateForm/UpdateForm.jsx';
 import Message from './Components/Message/Message.jsx';
+import Admin from './Components/Admin/Admin.jsx';
 
 const App = () => {
 
@@ -56,6 +57,7 @@ const App = () => {
         <Route path='*' element={<ErrorPage />} />
         <Route path='/update-form' element={<UpdateForm />} />
         <Route path="/messages" element={<Message />} />
+        <Route path='/admin-dashboard' element={ <Admin /> } />
         
       </Routes>
     </Router>
