@@ -267,9 +267,12 @@ const Sidebar = ({ image }) => {
                         <Link to="/profile" className="dropdown-item">
                             Profile
                         </Link>
-                        <Link to="/login" className="dropdown-item">
-                            Login as Admin
-                        </Link>
+                        {role === "Mentor" && (
+                            <Link to="/login" className="dropdown-item">
+                                Login as Admin
+                            </Link>
+                        )}
+
                         <Link
                             to="/"
                             className="dropdown-item"

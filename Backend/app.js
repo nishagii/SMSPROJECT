@@ -377,7 +377,7 @@ app.post("/api/login", async (req, res) => {
             });
         }
     } catch (error) {
-        console.error("Error in login:", error.response.data); // This will log the error to the console
+        console.error("Error in login:", error.message); // This will log the error to the console
         res.status(500).json({ error: "Internal server error" });
     }
 });
