@@ -1,11 +1,23 @@
 .admin-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 40px auto;
     background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     padding: 32px;
 }
+.slidermenu {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 50%;
+    height: calc(100% - 16px);
+    background: #ffffff;
+    border-radius: 8px;
+    transition: left 0.3s ease-in-out;
+}
+
+
 .admin-title {
     font-size: 28px;
     font-weight: 600;
@@ -13,24 +25,25 @@
     text-align: center;
     margin-bottom: 32px;
 }
+
 .tabs-container {
     position: relative;
     margin-bottom: 32px;
 }
+
 .tabs {
-    position: relative;
     display: flex;
     justify-content: center;
-    gap: 8px;
     background: #f6f6f7;
     padding: 8px;
     border-radius: 12px;
-    margin: 0 auto;
     max-width: 400px;
+    margin: 0 auto;
 }
+
 .tab {
-    position: relative;
-    padding: 12px 32px;
+    flex: 1;
+    padding: 12px 24px;
     font-size: 16px;
     font-weight: 500;
     color: #8E9196;
@@ -38,118 +51,150 @@
     border: none;
     cursor: pointer;
     transition: color 0.3s ease;
-    z-index: 2;
-    flex: 1;
-    text-align: center;
 }
+
 .tab.active {
     color: #1a1a1a;
 }
-.slider {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    width: calc(50% - 8px);
-    height: calc(100% - 16px);
-    background: #ffffff;
-    border-radius: 8px;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+.table-wrapper {
+    overflow-x: auto;
 }
-.section-title {
-    font-size: 20px;
-    font-weight: 500;
-    color: #1a1a1a;
-    margin-bottom: 24px;
-}
+
 .data-table {
     width: 100%;
-    border-collapse: separate;
+    border-collapse: collapse;
     border-spacing: 0;
     background: #ffffff;
     border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
+
 .data-table thead {
     background: #f3f3f3;
 }
-.data-table th {
-    padding: 16px 24px;
-    font-weight: 500;
-    color: #1a1a1a;
+
+.data-table th, 
+.data-table td {
+    padding: 14px 20px;
     text-align: left;
     font-size: 14px;
 }
+
+.data-table th {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
 .data-table td {
-    padding: 16px 24px;
     color: #4a4a4a;
-    border-top: 1px solid #f1f1f1;
-    font-size: 14px;
+    border-top: 1px solid #eaeaea;
 }
-.data-table tbody tr {
-    transition: background-color 0.2s ease;
-}
+
 .data-table tbody tr:hover {
     background-color: #f8f8f8;
 }
-.content-container {
-    animation: fadeIn 0.3s ease;
+
+.actions-cell {
+    display: flex;
+    gap: 10px;
 }
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+
+.update-btn, .delete-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
 }
+
+.update-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.update-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #da190b;
+}
+
 @media (max-width: 768px) {
     .admin-container {
-        margin: 20px;
         padding: 20px;
     }
+
+    .tabs {
+        max-width: 100%;
+    }
+
     .data-table {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
     }
-    .tabs {
-        max-width: 100%;
-    }
-    .tab {
-        padding: 12px 20px;
-    }
+}
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 2rem;
 }
 
-.actions-cell {
-    display: flex;
-    gap: 8px;
-    justify-content: flex-start;
-    align-items: center;
-}
-.action-btn {
-    padding: 6px 12px;
+.logout-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
     border: none;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 500;
+    border-radius: 5px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
 }
-.update-btn {
-    background-color: #4CAF50;
-    color: white;
+
+.logout-btn:hover {
+    background-color: #c82333;
 }
-.update-btn:hover {
-    background-color: #45a049;
+
+.tabs {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    background: #f5f5f5;
+    padding: 5px;
+    border-radius: 25px;
 }
-.delete-btn {
-    background-color: #f44336;
-    color: white;
+
+.tab {
+    width: 50%;
+    padding: 10px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    z-index: 2;
+    transition: color 0.3s ease;
 }
-.delete-btn:hover {
-    background-color: #da190b;
+
+.sliderr {
+    position: absolute;
+    width: 50%;
+    height: 85%;
+    background: white;
+    border-radius: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tab.active {
+    color: #333;
+    font-weight: bold;
 }
