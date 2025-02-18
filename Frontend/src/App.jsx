@@ -24,6 +24,8 @@ import ViewFeedback from './Components/ViewFeedback/ViewFeedback.jsx';
 import UpdateForm from './Components/UpdateForm/UpdateForm.jsx';
 import Message from './Components/Message/Message.jsx';
 import Admin from './Components/Admin/Admin.jsx';
+import AdminEditStudent from './Components/EditProfile/AdminEditStudent.jsx';
+import AdminEditMentor from './Components/EditProfile/AdminEditMentor.jsx';
 
 const App = () => {
 
@@ -57,7 +59,10 @@ const App = () => {
         <Route path='*' element={<ErrorPage />} />
         <Route path='/update-form' element={<UpdateForm />} />
         <Route path="/messages" element={<Message />} />
-        <Route path='/admin-dashboard' element={ <Admin /> } />
+        <Route path='/admin-dashboard' element={<Admin />} />
+          <Route path='/admin-edit-student/:id' element={< AdminEditStudent />} />
+          <Route path='/admin-edit-mentor/:id' element={< AdminEditMentor />} /> 
+          
         
       </Routes>
     </Router>
