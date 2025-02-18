@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Admin.css";
 const Admin = () => {
@@ -109,22 +110,8 @@ const Admin = () => {
                                         <td>{student.dept}</td>
                                         <td>{student.mentor}</td>
                                         <td className="actions-cell">
-                                            <button
-                                                className="action-btn update-btn"
-                                                onClick={() =>
-                                                    handleUpdate(student.id)
-                                                }
-                                            >
-                                                Update
-                                            </button>
-                                            <button
-                                                className="action-btn delete-btn"
-                                                onClick={() =>
-                                                    handleDelete(student.id)
-                                                }
-                                            >
-                                                Delete
-                                            </button>
+                                            <Link to={`/admin-edit-student/${student._id}`} className="text-blue-500 hover:underline">Update</Link> |
+                                            <Link to={``} className="text-red-500 hover:underline ml-2">Delete</Link>
                                         </td>
                                     </tr>
                                 ))}
@@ -155,22 +142,8 @@ const Admin = () => {
 
                                         <td>{mentor.expertise}</td>
                                         <td className="actions-cell">
-                                            <button
-                                                className="action-btn update-btn"
-                                                onClick={() =>
-                                                    handleUpdate(mentor.id)
-                                                }
-                                            >
-                                                Update
-                                            </button>
-                                            <button
-                                                className="action-btn delete-btn"
-                                                onClick={() =>
-                                                    handleDelete(mentor.id)
-                                                }
-                                            >
-                                                Delete
-                                            </button>
+                                            <Link to={`/admin-edit-mentor/${mentor._id}`} className="text-blue-500 hover:underline">Update</Link> |
+                                            <Link to={``} className="text-red-500 hover:underline ml-2">Delete</Link>
                                         </td>
                                     </tr>
                                 ))}
