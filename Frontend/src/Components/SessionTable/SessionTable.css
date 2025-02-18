@@ -1,0 +1,159 @@
+  .session-table-content{
+    margin-top: 80px;
+  }
+
+  .session-table-content p{
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .session-report-form{
+    display: flex;
+    flex-direction: column;
+    
+    
+  }
+
+  .session-report-form div{
+    display: flex;
+    gap: 20px;
+    font-weight: bold;
+    margin:30px 15% 20px 15%;
+  }
+
+  .report-btn{
+    width: 150px;
+    margin-left: 15%;
+  }
+
+  .reports-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    gap: 20px;
+    padding: 20px 80px;
+  }
+
+  .report-card {
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* Ensures strong and span are in two columns */
+    gap: 10px; /* Space between strong and span */
+    width: 80%;
+    margin: 30px 20px 20px 0px;
+    padding: 20px 10px;
+  } 
+
+  .report-card strong:first-of-type {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 20px;
+  }
+  
+  .report-card > div {
+    display: contents; /* Use display: contents to make the grid behave as if it’s just content */
+  }
+  
+  .report-card div strong {
+    display: inline-block; /* Keep strong as inline elements within the grid */
+  }
+  
+  .report-card div span {
+    display: inline-block; /* Ensures span content takes the width available */
+    white-space: pre-wrap;
+  }
+
+  .report-card strong {
+    margin-left:30px ;
+  }
+  
+  .report-edit-btn,.report-delete-btn{
+    border: none;
+    width: 80px;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 10px 0;
+  }
+  
+  .report-edit-btn{
+    margin-left: 25px;
+    background-color: #4CAF50;
+  }
+
+  .report-delete-btn{
+    background-color: #f44336;
+  }
+
+  .report-edit-btn:hover{
+    background-color: #45a049;
+    scale: 1.03;
+  }
+
+  .report-delete-btn:hover{
+    background-color:#e53935;
+    scale: 1.03;
+  }
+
+  .no-report-card{
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px 0;
+    padding: 80px;
+  }
+
+  @media (max-width: 768px) {
+    .report-card {
+      width: 95%; 
+      padding: 15px; 
+      margin: 15px 0; 
+    }
+    
+    .reports-container{
+      padding: 20px 40px;
+    }
+
+    .session-table-content {
+      flex-direction: column;
+    }
+  
+    .session-report-form div{
+      gap: 0;
+    }
+  
+    .session-report-form div label,
+    .session-report-form div input {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .report-card {
+      /* Mobile-specific styles */
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    
+    .reports-container{
+      padding: 20px 0px;
+    }
+
+    .session-table-content {
+      flex-direction: column;
+    }
+  
+    .session-report-form div {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .session-report-form div label,
+    .session-report-form div input {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }

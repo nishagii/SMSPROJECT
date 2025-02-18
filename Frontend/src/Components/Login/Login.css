@@ -1,0 +1,123 @@
+.cont{
+  display:flex;
+  height:100vh;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(to bottom left, #a8edea, #fed6e3);
+}
+.cont form{
+  width: 300px;
+  height: 400px;
+  background-color: white;
+  padding: 10px 28px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  
+}
+.cont form h2{
+  text-align: center;
+  margin: 5px 0;
+  color: blue;
+}
+.cont form label{
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 16px;
+}
+.cont form input{
+  border:none;
+  outline: none;
+  border-bottom: 2px solid silver;
+  border-radius: 2px;
+  font-size: medium;
+  padding-top: 5px;
+  padding-left: 20px;
+  width: 100%;
+}
+.cont form input.error-state{
+  border-bottom-color: tomato;
+}
+.cont form button{
+  border: none;
+  background-color:rgb(13, 13, 122) ;
+  color: white;
+  padding: 7px 35px;
+  border-radius: 20px;
+  margin-top: 15px;
+  width: 100%;
+}
+.cont form button:hover{
+  background-color:blue;
+}
+.cont form h4{
+  font-size: 14px;
+}
+.role-wrapper{
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+}
+
+.eye-wrapper{
+  float: right;
+  position: relative;
+}
+.fa-eye, .fa-eye-slash{
+  color: brown;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 888;
+}
+.fa-xmark{
+  float: right;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  padding: 10px;
+}
+.xbtn{
+  color: black;
+}
+.fa-xmark:hover{
+  background-color: red;
+  padding: 10px;
+  transition: padding 0.3s ease;
+}
+.input-wrapper{
+  position: relative;
+}
+.fa-user, .fa-lock{
+  color: brown;
+  position: absolute;
+  top: 75%;
+  transform: translateY(-50%);
+  z-index: 888;
+}
+.btn-center{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.forgot{
+  text-align: right;
+  margin-top: 5px;
+}
+
+@media(max-width:425px){
+  .cont{
+    background: aliceblue;
+    
+  }
+  .cont form input{
+    width: 100%;
+  }
+  .cont form label{
+    font-size: 16px;
+  }
+  
+}

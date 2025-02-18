@@ -1,0 +1,213 @@
+.view-feedback-form{
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10%;
+  height: auto;
+}
+.view-feedback-form h2{
+  text-align: center;
+  color: blue;
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+
+.view-feedback-form div input{
+  margin-left: 15px;
+  margin-top: 30px;
+}
+
+.view-feedback-btn{
+  border: none;
+  border-radius: 10px;
+  width: 160px;
+  padding: 10px;
+  background-color: rgb(13, 13, 122);
+  color: white;
+  cursor: pointer;
+  margin: 30px;
+}
+
+.view-feedback-btn:hover{
+  background-color: blue;
+  scale: 1.03;
+}
+
+.view-feedback-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  gap: 80px; 
+  padding: 20px 80px;
+}
+
+.view-feedback-card {
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: calc(40% - 40px);
+  padding: 30px;
+  text-align:justify;
+  margin-bottom: 30px;
+} 
+
+.view-feedback-card strong:first-of-type {
+  font-weight: bold;
+  color: #007bff;
+  font-size: 20px;
+  font-style: normal;
+}
+
+.view-feedback-card strong{
+  margin: 0;
+  font-style: italic;
+}
+
+
+.view-feedback-card span{
+  margin-left: 10px;
+}
+
+.feedback-delete-btn{
+  border: none;
+  width: 80px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #C62300;
+  font-size: 15px;
+  margin: 10px 0;
+  color: white;
+}
+
+.feedback-delete-btn:hover{
+  background-color:#FF4545;
+  scale: 1.03;
+}
+
+.delete-all-feedbacks{
+  border: none;
+  width: 120px;
+  padding: 12px;
+  border-radius: 10px;
+  background-color: #C62300;
+  font-size: 15px;
+  margin: 10px 0;
+  color: white;
+}
+
+.delete-all-feedbacks:hover{
+  background-color: #FF4545;
+  scale: 1.03;
+}
+
+.no-feedback-card{
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 20px 0;
+  padding: 80px;
+}
+
+
+/*styles for confirm message alert */
+div.react-confirm-alert-body h1{
+  color: blue;
+  text-align: center;
+}
+
+div.react-confirm-alert-button-group{
+  display: flex;
+  justify-content: space-around;
+  padding: 0 60px;
+
+}
+
+div.react-confirm-alert-button-group button:nth-child(1) {
+  background-color: #4CAF50;  
+  color: white;                
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+div.react-confirm-alert-button-group button:nth-child(1):hover {
+  background-color: #45a049;
+  scale: 1.03; 
+}
+
+div.react-confirm-alert-button-group button:nth-child(2) {
+  background-color: #f44336; 
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+div.react-confirm-alert-button-group button:nth-child(2):hover {
+  background-color: #d32f2f;
+  scale: 1.03;
+}
+
+/* styles for various devices */
+@media(max-width:900px){
+  .view-feedback-card{
+    width: 60%;
+  }
+
+  .view-feedback-container {
+    display: flex; 
+    gap: 40px; 
+  }
+}
+
+@media(max-width:650px){
+  .view-feedback-card{
+    width: 100%;
+  }
+
+  .view-feedback-container {
+    display: flex; 
+    gap: 40px; 
+  }
+}
+
+
+@media(max-width:450px){
+  .view-feedback-form{
+    padding: 0 10px;
+    margin: 80px 20px 20px 20px;
+  }
+
+  .view-feedback-form div span{
+    margin-left: 10px;
+  }
+
+  .view-feedback-form div input{
+    margin: 20px 10px;
+  }
+
+  .view-feedback-card{
+    width: 100%;
+    border-radius: 0;
+    gap: 10px; 
+  }
+
+  .view-feedback-container {
+    display: flex; 
+    gap: 20px;
+    padding: 0;
+    
+  }
+
+  .no-feedback-card{
+    padding: 30px;
+    margin-bottom: 50px;
+    border-radius: 0;
+  }
+}

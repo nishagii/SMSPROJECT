@@ -1,0 +1,130 @@
+
+.container2{
+  
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:160vh;
+  background: linear-gradient(to bottom left, #a8edea, #fed6e3);
+}
+
+.myform{
+  width: 370px;
+  height: 830px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+  position: relative;
+   
+}
+.myform h2{
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  color: blue;
+}
+.myform label{
+  font-size: 15px;
+}
+.myform input{
+  border:none;
+  outline: none;
+  border-bottom: 2px solid silver;
+  border-radius: 2px;
+  font-size: medium;
+}
+.myform input.error-state{
+  border-bottom-color:tomato ;
+}
+.myform input::placeholder{
+  padding-left: 5px;
+
+}
+.myform select{
+  outline: none;
+  border: solid 1px black;
+  border-radius: 4px;
+}
+.myform button{
+  border: none;
+  background-color:rgb(13, 13, 122) ;
+  color: white;
+  padding: 5px 0;
+  margin: 10px 25px 0;
+  border-radius: 100px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.myform button:hover{
+  cursor: pointer;
+  background-color:blue ;
+}
+.error{
+  display: block;
+  color: red;
+  font-size: 14px;
+  font-style:italic ;
+}
+.cover{
+  display: flex;
+  padding-top: 4px;
+  justify-content: space-evenly;
+}
+.cover h4{
+  font-size: 15px;
+}
+.link{
+  text-decoration: none;
+  margin-left:5px ;
+  font-weight: bold;
+}
+.link:hover{
+  color: blue;
+}
+
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  width: 100%;
+}
+
+.password-field .icon {
+  position: absolute;
+  right: 10px;
+  top: -8px;
+  cursor: pointer;
+  color: brown;
+}
+
+.fa-eye, .fa-eye-slash {
+  font-size: 1.2em;
+}
+
+
+@media(max-width:425px){
+  .cover h4{
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+  }
+  .container2{
+    height: 100%;
+    width: 100%;
+  }
+  .myform label{
+    font-size: medium;
+  }
+  .fa-xmark{
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+}
+

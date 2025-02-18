@@ -1,0 +1,208 @@
+.dashboard-container{
+    height: 100%;
+    width: 100%;
+  }
+
+.mentorhero-container {
+    padding: 0px 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .mentor-welcome {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e5ddff;
+    border: 1px solid #ececec;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    margin-top: 80px;
+  }
+  
+  .mentor-greeting {
+    font-weight: bold;
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 0;
+    margin-left: 20px;
+  }
+  
+  .mentor-name {
+    font-weight: bold;
+    color: #1e90ff;
+    text-transform: uppercase;
+    font-size: 35px;
+  }
+  
+  .messages-button {
+    background-color: #1e90ff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .messages-button:hover {
+    background-color: #005bb5;
+  }
+  
+  .student-list {
+    background-color: #ffffff;
+    border: 1px solid #ececec;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .student-list h2 {
+    color: #333;
+    text-transform: uppercase;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .batches {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .batch {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+  }
+  
+  .student-button {
+    margin-top: 10px;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .student-button:hover {
+    background-color: #005bb5;
+  }
+
+.modal-li {
+  text-align: left; 
+  padding: 8px 12px; 
+  border-bottom: 1px solid #ddd; 
+}
+
+.modal-style{
+  border-radius: 0;
+}
+
+.recommendations {
+  margin-top: 20px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e5ddff;
+  border: 1px solid #ececec;
+  padding: 20px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.recommendation-list {
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.recommendation-item {
+  cursor: pointer;
+}
+
+.resource-open{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110vh;
+  background-color: rgba(0,0,0, 0.6);
+  backdrop-filter: blur(5px);
+}
+
+.upload-form-container {
+  position: relative;
+  background-color: #f9f9f9;
+  padding: 20px;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.upload-form-container h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.upload-form-container label {
+  font-size: 16px;
+  color: #666;
+  margin-top: 10px;
+  display: block;
+  font-weight: 500;
+}
+
+.upload-form-container select,
+.upload-form-container input[type="text"],
+.upload-form-container input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.upload-form-container select:focus,
+.upload-form-container input[type="text"]:focus,
+.upload-form-container input[type="file"]:focus {
+  outline: none;
+  border-color: #1e90ff;
+  box-shadow: 0 0 5px rgba(30, 144, 255, 0.4);
+}
+
+.upload-form-container button {
+  background-color: #1e90ff;
+  color: white;
+  padding: 12px;
+  margin-top: 15px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-form-container button:hover {
+  background-color: #005bb5;
+}
+
+.upload-form-container button:active {
+  background-color: #004080;
+}
+

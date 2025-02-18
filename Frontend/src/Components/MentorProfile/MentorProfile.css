@@ -1,0 +1,32 @@
+.cont-cent form{
+  height: 90vh;
+  width: auto;
+}
+.cont-cent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.go-dash{
+  background-color: rgb(52, 243, 34);
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.go-dash:hover{
+  scale: 1.04;
+  background:rgb(54, 203, 40);
+
+}
+
+.cent{
+  display: flex;
+  justify-content: center;
+}
+.cent img{
+  margin-top:30px
+}

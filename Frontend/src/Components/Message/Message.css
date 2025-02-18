@@ -1,0 +1,11 @@
+.msg-go-back{
+  border: none;
+  padding: 5px;
+  background-color: blue;
+  color: white;
+  width: 100%;
+}
+
+.msg-go-back:hover{
+  background-color: darkblue;
+}

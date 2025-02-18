@@ -1,0 +1,156 @@
+.navi {
+  width: 100%;
+  height: 90px;
+  background: #FFD700;
+  color: black;
+  padding: 4px 0;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 30;
+}
+
+.logo {
+  width: 70px;
+  border-radius: 50%;
+  /* margin: 5px 10px 5px 0; */
+}
+
+.menu, .menu-cont {
+  display: none;
+}
+
+.lst {
+  display: inline-block;
+  list-style: none;
+  margin: 5px 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.txt h3 {
+  font-size: 24px;
+  margin-top: 5px;
+}
+
+.txt h5 {
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.nav {
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  width: auto;
+}
+
+.nav:hover {
+  background-color: aquamarine;
+  border-radius: 2px;
+  color: black;
+}
+
+
+@media(max-width:1070px) {
+  .txt h3 {
+    font-size: 20px;
+  }
+  
+  .txt h5 {
+    margin-top: 4px;
+    font-size: 12px;
+  }
+}
+
+@media(max-width:1000px) {
+  .menu {
+    display: block;
+    border: none;
+    outline: none;
+    background-color: #FFD700;
+    cursor: pointer;
+  }
+
+  .menu i {
+    margin: 10px;
+  }
+
+  .menu-cont {
+    display: flex;
+    gap: 5px;
+  }
+
+  .menu-cont label {
+    margin-top: 5px;
+  }
+
+  .nav{
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .mnu {
+    display: flex; 
+    flex-direction: column;
+    gap: 10px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color:rgba(0,0,0,0.8);
+    width: 170px;
+    z-index: -6;
+    padding-top: 70px;
+    transition: right 0.5s ease-in-out;
+    border-radius: 5px;
+  }
+  .xmark{
+    color: white;
+  }
+  .lst{
+    color: white;
+    transform: scale(1);
+  }
+
+  .lst:hover{
+    color: black;
+    transition: transform 0.5s ease;   
+  }
+
+  #hide-menu {
+    right: -170px;
+  }
+  .menu-label{
+    display: none;
+  }
+}
+
+@media(max-width:768px) {
+  nav {
+    width: 100%;
+  }
+  .txt {
+    margin-right: 0px;
+  }
+  .txt h3 {
+    font-size: 14px;
+  }
+  .txt h5 {
+    font-size: 11px;
+  }
+  .logo {
+    width: 40px;
+    border-radius: 50%;
+    margin: 5px 6px 5px 0;
+  }
+  .lst{
+    font-size: 18px;
+  }
+  
+}

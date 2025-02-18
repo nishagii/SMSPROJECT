@@ -1,0 +1,99 @@
+.upload-prof{
+ margin-top: 100px;
+ margin-bottom: 40px;
+
+}
+.form{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+}
+
+.edit-image{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+}
+
+.edit-image img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.5);
+  margin-bottom: 30px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.edit-image span{
+  position: absolute;
+  bottom:50px ;
+  right: 60px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: azure;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.edit-image ul{
+  list-style-type: none;
+  
+}
+
+.add-pic-li{
+margin-bottom: 25px;
+margin-right: 0px;
+}
+
+.edit-image ul li{
+  position: absolute;
+  bottom: -15px;
+  right: -40px;
+  cursor: pointer;
+  width: 50%;
+  background-color: aliceblue;
+  padding: 4px;
+  z-index: 100;
+}
+
+.edit-image ul li:hover{
+  background-color: blue;
+  opacity: 60%;
+  color: white;
+}
+
+.upload-prof label{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upload-prof input{
+  border:none;
+  outline: none;
+  border-bottom: 2px solid silver;
+  border-radius: 2px;
+  font-size: medium;
+}
+
+.upload-prof button{
+  margin: 15px 0;
+}
+
+.hide {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}

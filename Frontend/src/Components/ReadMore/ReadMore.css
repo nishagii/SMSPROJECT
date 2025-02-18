@@ -1,0 +1,44 @@
+.content-read{
+    width: auto;
+    margin: 0rem auto;
+    border-radius: 4px;
+    color: #2c2c54; 
+    justify-content: center;
+    padding: 0 10%;
+    margin-top: 20px;
+    font-size: 18px;
+    
+}
+
+.long-text{
+    max-height: 0;
+    overflow: hidden;
+    display: inline-block;
+    transition: max-height 1s;
+}
+
+.expanded{
+    max-height: 30rem;
+    transition: max-height 2s;
+}
+
+.more-btn{
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color: rgba(0, 255, 247, 0.888);
+    text-align: center;
+    border-color:rgba(3, 9, 52, 0.557) ;
+    margin-bottom: 2rem;
+    
+}
+
+.more-btn:hover{
+    background-color: #141665;
+    color: aliceblue;
+    border-color: rgb(0, 217, 255);
+}
+
+.btn-wrap{
+    display:grid;
+    place-items: center;
+}

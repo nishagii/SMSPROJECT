@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body, html {
+    height: 100%;
+}
+  
+.app {
+    font-family: Arial, sans-serif;
+}
+
+.main-content {
+    position: relative;
+    height: 100vh;
+    background-image: url('../../assets/Session.jpg'); /* Background image */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    margin-top: 60px;
+}
+  
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    
+}
+
+.content {
+    position: relative;
+    color: white;
+    z-index: 2;
+}
+  
+.content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    padding: 0 10%;
+}
+
+.cta-btn {
+    padding: 0.75rem 2rem; 
+    font-size: 1.25rem;
+    background-color: rgba(255, 255, 255, 0.395);
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+
+}
+  
+.cta-btn:hover {
+    background-color: #f00;
+    color: white;
+}
+
+.about-wt{
+    /* background-color:#D980FA; */
+    text-align: justify;
+}
+
+.about-why{
+    /* background-color: #FD7272; */
+    text-align: justify;
+}
+
+.about-wt h2{
+    color: #715; 
+    padding: 3rem 1rem 0;
+    margin-left: 1rem ;
+    text-align: center;
+    font-weight: bold;
+}
+
+.about-why h2{
+    color: #715;
+    padding: 3rem 1rem 0;
+    margin-left: 1rem ;
+    font-weight: bold;
+    text-align: center;
+}
+
+.about-why{
+    color: black; 
+}
+
+
+  
