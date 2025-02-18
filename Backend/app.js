@@ -627,6 +627,8 @@ app.post("/api/reset-password", async (req, res) => {
     }
 });
 
+//Admin endpoints
+
 // get all students
 app.get("/api/students", async (req, res) => {
     try {
@@ -646,6 +648,7 @@ app.get("/api/mentors", async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
 
 // Get Mentors to Student Sign up dashboard
 app.get("/api/mentors", async (req, res) => {

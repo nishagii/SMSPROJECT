@@ -66,7 +66,7 @@ const Login = () => {
                 } else if (role === "Student") {
                     navigate("/student-dashboard");
                 } else if (role === "Admin") {
-                    navigate("/");
+                    navigate("/admin-dashboard");
                 }
             }
         } catch (err) {
