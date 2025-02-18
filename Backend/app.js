@@ -631,17 +631,21 @@ app.post("/api/reset-password", async (req, res) => {
 
 // get student by sid
 app.get("/api/student/:_id", async (req, res) => {
-    try {
-        const { _id } = req.params;
-        const student = await Student.findOne({ _id });
+    if (req.session.user) {
+        try {
+            const { _id } = req.params;
+            const student = await Student.findOne({ _id });
 
-        if (!student) {
-            return res.status(404).json({ message: "Student not found" });
+            if (!student) {
+                return res.status(404).json({ message: "Student not found" });
+            }
+
+            res.status(200).json(student);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
         }
-
-        res.status(200).json(student);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+    } else {
+        res.status(200).json({ isActive: false, message: "Session expired" });
     }
 });
 
@@ -773,6 +777,7 @@ app.delete("/api/delete-mentor/:_id", async (req, res) => {
 
 // get all students
 app.get("/api/students", async (req, res) => {
+    // if (req.session.user) {
     try {
         const students = await Student.find(
             {},
@@ -782,6 +787,9 @@ app.get("/api/students", async (req, res) => {
     } catch {
         res.status(500).json({ error: error.message });
     }
+    // } else {
+    //     res.status(200).json({ isActive: false, message: "Session expired" });
+    // }
 });
 
 // get all mentors
