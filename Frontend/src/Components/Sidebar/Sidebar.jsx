@@ -267,11 +267,12 @@ const Sidebar = ({ image }) => {
                         <Link to="/profile" className="dropdown-item">
                             Profile
                         </Link>
-                        {role === "Mentor" && (
-                            <Link to="/login" className="dropdown-item">
-                                Login as Admin
-                            </Link>
-                        )}
+                        {role === "Mentor" &&
+                            mail === "admin@ict.cmb.ac.lk" && (
+                                <Link to="/login" className="dropdown-item">
+                                    Login as Admin
+                                </Link>
+                            )}
 
                         <Link
                             to="/"

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useSessionTimeout from "../../Hooks/useSessionTimeout.jsx";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Admin.css";
@@ -8,6 +9,27 @@ const Admin = () => {
     const [activeTab, setActiveTab] = useState("students");
     const [students, setStudents] = useState([]);
     const [mentors, setMentors] = useState([]);
+    const { sessionExpired, checkSession } = useSessionTimeout();
+
+    useEffect(() => {
+        checkSession(); // Trigger session check on component mount
+    }, []);
+
+    if (sessionExpired) {
+        return (
+            <div className="session-expired-overlay">
+                <div className="session-expired-message">
+                    <h2>
+                        <i class="bx bxs-error warning"></i>Session Expired
+                    </h2>
+                    <p>Your session has expired. Please log in again.</p>
+                    <Link to="/login" className="link">
+                        Login
+                    </Link>
+                </div>
+            </div>
+        );
+    }
     const [sliderPosition, setSliderPosition] = useState("0%");
 
     const navigate = useNavigate();
@@ -15,7 +37,9 @@ const Admin = () => {
     useEffect(() => {
         const fetchStudents = async () => {
             try {
-                const response = await axios.get("http://localhost:5001/api/students");
+                const response = await axios.get(
+                    "http://localhost:5001/api/students"
+                );
                 setStudents(response.data);
             } catch (error) {
                 console.error("Error fetching students:", error);
@@ -27,7 +51,9 @@ const Admin = () => {
     useEffect(() => {
         const fetchMentors = async () => {
             try {
-                const response = await axios.get("http://localhost:5001/api/mentors");
+                const response = await axios.get(
+                    "http://localhost:5001/api/mentors"
+                );
                 setMentors(response.data);
             } catch (error) {
                 console.error("Error fetching mentors:", error);
@@ -51,29 +77,28 @@ const Admin = () => {
         setSliderPosition(tab === "students" ? "0%" : "50%");
     };
 
-
     return (
         <div className="admin-container">
             <div className="admin-header">
                 <h2 className="admin-title">Admin Dashboard</h2>
-                <Link
-                    to="/login"
-                    className="logout-btn"
-                    onClick={handleLogout}
-                >
+                <Link to="/login" className="logout-btn" onClick={handleLogout}>
                     Logout
                 </Link>
             </div>
             <div className="tabs-container">
                 <div className="tabs">
                     <button
-                        className={`tab ${activeTab === "students" ? "active" : ""}`}
+                        className={`tab ${
+                            activeTab === "students" ? "active" : ""
+                        }`}
                         onClick={() => handleTabChange("students")}
                     >
                         Students
                     </button>
                     <button
-                        className={`tab ${activeTab === "mentors" ? "active" : ""}`}
+                        className={`tab ${
+                            activeTab === "mentors" ? "active" : ""
+                        }`}
                         onClick={() => handleTabChange("mentors")}
                     >
                         Mentors
@@ -82,7 +107,7 @@ const Admin = () => {
                         className="sliderr"
                         style={{
                             left: sliderPosition,
-                            transition: "left 0.3s ease-in-out"
+                            transition: "left 0.3s ease-in-out",
                         }}
                     />
                 </div>
@@ -99,9 +124,9 @@ const Admin = () => {
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Year</th>
-                                        <th>Department</th>
-                                        <th>Mentor</th>
+                                        <th>year</th>
+                                        <th>department</th>
+                                        <th>mentor</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -115,8 +140,44 @@ const Admin = () => {
                                             <td>{student.dept}</td>
                                             <td>{student.mentor}</td>
                                             <td className="actions-cell">
-                                                <Link to={`/admin-edit-student/${student._id}`} className="update-btn">Update</Link>
-                                                <Link to="#" className="delete-btn">Delete</Link>
+                                                <Link
+                                                    to={`/admin-edit-student/${student._id}`}
+                                                    className="text-blue-500 hover:underline"
+                                                >
+                                                    Update
+                                                </Link>{" "}
+                                                |
+                                                <Link
+                                                    to={``}
+                                                    onClick={async () => {
+                                                        if (
+                                                            window.confirm(
+                                                                "Are you sure you want to delete this student?"
+                                                            )
+                                                        ) {
+                                                            try {
+                                                                await axios.delete(
+                                                                    `http://localhost:5001/api/delete-students/${student._id}`
+                                                                );
+                                                                const response =
+                                                                    await axios.get(
+                                                                        "http://localhost:5001/api/students"
+                                                                    );
+                                                                setStudents(
+                                                                    response.data
+                                                                );
+                                                            } catch (error) {
+                                                                console.error(
+                                                                    "Error deleting student:",
+                                                                    error
+                                                                );
+                                                            }
+                                                        }
+                                                    }}
+                                                    className="text-red-500 hover:underline ml-2"
+                                                >
+                                                    Delete
+                                                </Link>
                                             </td>
                                         </tr>
                                     ))}
@@ -136,7 +197,6 @@ const Admin = () => {
                                         <th>Email</th>
                                         <th>Department</th>
                                         <th>Phone</th>
-                                        <th>Expertise</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -147,10 +207,47 @@ const Admin = () => {
                                             <td>{mentor.mail}</td>
                                             <td>{mentor.dept}</td>
                                             <td>{mentor.phone}</td>
+
                                             <td>{mentor.expertise}</td>
                                             <td className="actions-cell">
-                                                <Link to={`/admin-edit-mentor/${mentor._id}`} className="update-btn">Update</Link>
-                                                <Link to="#" className="delete-btn">Delete</Link>
+                                                <Link
+                                                    to={`/admin-edit-mentor/${mentor._id}`}
+                                                    className="text-blue-500 hover:underline"
+                                                >
+                                                    Update
+                                                </Link>{" "}
+                                                <Link
+                                                    to={``}
+                                                    onClick={async () => {
+                                                        if (
+                                                            window.confirm(
+                                                                "Are you sure you want to delete this mentor?"
+                                                            )
+                                                        ) {
+                                                            try {
+                                                                await axios.delete(
+                                                                    `http://localhost:5001/api/delete-mentor/${mentor._id}`
+                                                                );
+                                                                // Refresh mentor list
+                                                                const response =
+                                                                    await axios.get(
+                                                                        "http://localhost:5001/api/mentors"
+                                                                    );
+                                                                setMentors(
+                                                                    response.data
+                                                                );
+                                                            } catch (error) {
+                                                                console.error(
+                                                                    "Error deleting mentor:",
+                                                                    error
+                                                                );
+                                                            }
+                                                        }
+                                                    }}
+                                                    className="text-red-500 hover:underline ml-2"
+                                                >
+                                                    Delete
+                                                </Link>
                                             </td>
                                         </tr>
                                     ))}

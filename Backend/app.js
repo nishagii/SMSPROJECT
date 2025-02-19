@@ -96,7 +96,7 @@ const Mentor = mongoose.model(
 const Admin = mongoose.model(
     "Admin",
     new mongoose.Schema({
-        name: String,
+        sname: String,
         mail: String,
         pass: String,
     })
@@ -366,7 +366,7 @@ app.post("/api/login", async (req, res) => {
             }
 
             req.session.user = {
-                name: admin.name,
+                name: admin.sname,
                 email: admin.mail,
                 role: "Admin",
             };
@@ -629,8 +629,151 @@ app.post("/api/reset-password", async (req, res) => {
 
 //Admin endpoints
 
+// get student by sid
+app.get("/api/student/:_id", async (req, res) => {
+    try {
+        const { _id } = req.params;
+        const student = await Student.findOne({ _id });
+
+        if (!student) {
+            return res.status(404).json({ message: "Student not found" });
+        }
+
+        res.status(200).json(student);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// get mentor by id
+app.get("/api/mentor/:_id", async (req, res) => {
+    try {
+        const { _id } = req.params;
+        const student = await Mentor.findOne({ _id });
+
+        if (!student) {
+            return res.status(404).json({ message: "Mentor not found" });
+        }
+
+        res.status(200).json(student);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// update students by id
+// Update student by sid
+app.put("/api/edit-student/:_id", async (req, res) => {
+    try {
+        const { _id } = req.params;
+        const updates = req.body;
+
+        const student = await Student.findOneAndUpdate(
+            { _id },
+            updates,
+            { new: true } // Returns updated document
+        );
+
+        if (!student) {
+            return res.status(404).json({ message: "Student not found" });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Student updated successfully",
+            data: student,
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error updating student",
+            error: error.message,
+        });
+    }
+});
+
+// update mentor by id
+app.put("/api/edit-mentor/:_id", async (req, res) => {
+    try {
+        const { _id } = req.params;
+        const updates = req.body;
+
+        const mentor = await Mentor.findOneAndUpdate(
+            { _id },
+            updates,
+            { new: true } // Returns updated document
+        );
+
+        if (!mentor) {
+            return res.status(404).json({ message: "Mentor not found" });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Mentor updated successfully",
+            data: mentor,
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error updating Mentor",
+            error: error.message,
+        });
+    }
+});
+
+// delete student by id
+// Delete student by sid
+
+app.delete("/api/delete-students/:_id", async (req, res) => {
+    try {
+        const { _id } = req.params;
+        const student = await Student.findByIdAndDelete(_id);
+
+        if (!student) {
+            return res.status(404).json({ message: "Student not found" });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Student deleted successfully",
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error deleting student",
+            error: error.message,
+        });
+    }
+});
+
+// delete mentor by id
+// Delete mentor by mid
+app.delete("/api/delete-mentor/:_id", async (req, res) => {
+    try {
+        const { _id } = req.params;
+        const mentor = await Mentor.findByIdAndDelete(_id);
+
+        if (!mentor) {
+            return res.status(404).json({ message: "Mentor not found" });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Mentor deleted successfully",
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error deleting Mentor",
+            error: error.message,
+        });
+    }
+});
+
 // get all students
 app.get("/api/students", async (req, res) => {
+    // if (req.session.user) {
     try {
         const students = await Student.find(
             {},
@@ -640,6 +783,9 @@ app.get("/api/students", async (req, res) => {
     } catch {
         res.status(500).json({ error: error.message });
     }
+    // } else {
+    //     res.status(200).json({ isActive: false, message: "Session expired" });
+    // }
 });
 
 // get all mentors
@@ -651,8 +797,6 @@ app.get("/api/mentors", async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-
-
 
 // Get Mentors to Student Sign up dashboard
 app.get("/api/mentors", async (req, res) => {
